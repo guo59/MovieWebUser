@@ -74,6 +74,7 @@ export default {
         message: '发表评论成功！',
         type: 'success'
       })
+      this.textarea = ''
     }
   }
 }

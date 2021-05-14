@@ -1,6 +1,9 @@
 <template>
   <div class="movie">
-    <div class="title">热门电影</div>
+    <div class="top">
+      <div class="title">{{title}}</div>
+      <div class="back" v-if="isShowBack" @click="backHome">返回首页>></div>
+    </div>
     <div class="movieList">
       <div class="list-item" v-for="(item, index) in movieList" :key="index" @click="showMovie(item)">
         <div class="poster">
@@ -13,27 +16,20 @@
 </template>
 
 <script>
-import { getMovies} from '../../../network/movie'
-
 export default {
   components: {},
   data () {
     return {
-      movieList: []
+      
     }
   },
-  created() {
-    this._getMovies()
-  },
+  props: ['movieList', 'title', 'isShowBack'],
   methods: {
-    _getMovies() {
-      getMovies().then(res => {
-        console.log(res);
-        this.movieList = res.data
-      })
-    },
     showMovie(item) {
       this.$router.push(`/moviedetail/${item.id}`)
+    },
+    backHome() {
+      this.$emit('backHome')
     }
   }
 }
@@ -42,6 +38,10 @@ export default {
 <style type="text/css" scoped>
 .movie {
   margin-top: 30px;
+}
+.top {
+  display: flex;
+  justify-content: space-between;
 }
 .title {
   border-bottom: 1px solid #d1d1d1;
@@ -54,16 +54,16 @@ export default {
   text-align: center;
 }
 .list-item {
-  font-size: 20px;
+  font-size: 18px;
   width: 19%;
   padding-top: 50px;
 }
 .poster {
-  height: 241px;
+  height: 210px;
   overflow: hidden;
 }
 img {
-  width: 170px;
+  width: 150px;
 }
 .name {
   overflow: hidden;

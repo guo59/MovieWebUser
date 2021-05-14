@@ -8,6 +8,7 @@ const Mine = () => import('../views/profile/Mine')
 const Editname = () => import('../views/profile/EditName')
 const Comment = () => import('../views/profile/Comment')
 const MovieDetail = () => import('../views/movie/MovieDetail')
+const Register = () => import('../views/register/index')
 
 Vue.use(VueRouter)
 
@@ -19,6 +20,10 @@ const routes = [
   {
     path: '/login',
     component: Login
+  },
+  {
+    path: '/register',
+    component: Register
   },
   {
     path: '/home/:userId',

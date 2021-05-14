@@ -11,7 +11,7 @@
         <el-button type='success' icon='el-icon-upload' @click="_login">登录</el-button>
       </el-form-item>
       <el-form-item style="text-align: center">
-        <a href="#">还未有账号？点击注册</a>
+        <a @click="register">还未有账号？点击注册</a>
       </el-form-item>
     </el-form>
   </el-row>
@@ -49,10 +49,17 @@ export default {
           type: 'error'
         })
       })
+    },
+    register() {
+      this.$router.push('/register')
     }
   }
 }
 </script>
 
 <style type="text/css" scoped>
+a {
+  cursor: pointer;
+  color: #007722;
+}
 </style>

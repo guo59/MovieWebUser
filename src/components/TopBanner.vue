@@ -6,13 +6,14 @@
         <el-input
           placeholder="搜索电影"
           prefix-icon="el-icon-search"
-          v-model="searchContent">
+          v-model="searchContent"
+          @change="search">
         </el-input>
       </div>
     </div>
 
     <div class="type">
-      <div v-for="(item, index) in types" :key='index' class="type-text">
+      <div v-for="(item, index) in types" :key='index' class="type-text" @click="searchType(item)">
         {{item}}
       </div>
     </div>
@@ -28,7 +29,15 @@ export default {
       searchContent: ''
     }
   },
-  methods: {}
+  methods: {
+    search() {
+      this.$emit('search', this.searchContent)
+    },
+    searchType(item) {
+      console.log(item);
+      this.$emit('searchType', item)
+    }
+  }
 }
 </script>
 
@@ -64,5 +73,6 @@ export default {
 }
 .type-text {
   padding: 10px 20px;
+  cursor: pointer;
 }
 </style>

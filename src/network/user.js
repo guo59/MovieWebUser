@@ -35,3 +35,14 @@ export function getUserComment(id) {
     method: 'GET'
   })
 }
+
+export function register(name, password) {
+  return request({
+    url: `/user`,
+    method: 'POST',
+    data: {
+      name,
+      password
+    }
+  })
+}

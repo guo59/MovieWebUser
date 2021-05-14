@@ -1,8 +1,11 @@
 import { request} from './request'
 
-export function getMovies() {
+export function getMovies(name) {
   return request ({
-    url: '/movie'
+    url: '/movie',
+    params: {
+      name
+    }
   })
 }
 
@@ -62,5 +65,15 @@ export function getMovieComment(id) {
   return request({
     url: `/movie/${id}/comment`,
     method: 'GET'
+  })
+}
+
+export function getMovieByType(type) {
+  return request({
+    url: `/type`,
+    method: 'GET',
+    params: {
+      type
+    }
   })
 }
